@@ -15,11 +15,14 @@ logs
 
 # Passing arguments to functions.
 message() {
+ # This function sends a message to syslog and to standard output
+ # if VERBOSE is true.
   local MESSAGE="${@}"
   if [[ "${VERBOSE}" = 'true' ]]
   then
     echo "${MESSAGE}"
   fi
+  logger -t luser-demo10.sh "${MESSAGE}"
 }
 
 readonly VERBOSE='true'
